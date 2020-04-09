@@ -1,0 +1,17 @@
+app1:
+sudo docker run -d -h app1 -p 8080:8080 -p 8443:8443 benpiper/mtwa:app
+
+app2:
+sudo docker run -d -h app2 -p 8080:8080 -p 8443:8443  benpiper/mtwa:app
+
+app3:
+sudo docker run -d -h app3 -p 8080:8080 -p 8443:8443 benpiper/mtwa:app
+
+web1:
+sudo docker run -d -p 80:80 -p 443:443 -h web1 -e APPSERVER="http://[internal-app-lb-dns]:8080" benpiper/mtwa:web
+
+web2:
+sudo docker run -d -p 80:80 -p 443:443 -h web2 -e APPSERVER="http://[internal-app-lb-dns]:8080" benpiper/mtwa:web
+
+web3:
+sudo docker run -d -p 80:80 -p 443:443 -h web3 -e APPSERVER="http://[internal-app-lb-dns]:8080" benpiper/mtwa:web
